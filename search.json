@@ -2,23 +2,44 @@
   {
     "objectID": "index.html#welcome",
     "href": "index.html#welcome",
-    "title": "Title of Next Bestseller",
+    "title": "R Reference",
     "section": "Welcome",
-    "text": "Welcome\nWelcome splash page! Provide an overview of the book.\nSample evaluation of R and Python in a side-by-side manner:\n\n\n\nR\nmy_list = list(1, 2, 3)\ntypeof(my_list)\n\n[1] \"list\"\n\n\n\nPython\nmy_list = [1, 2, 3]\ntype(my_list)\n\n&lt;class 'list'&gt;"
+    "text": "Welcome\nHello there! You’ve stumbled across a reference guide that contains different useful R code and/or links. There isn’t a lot of depth associated with each page if you are expecting a through walkthrough of the material."
   },
   {
-    "objectID": "my-first-book.html",
-    "href": "my-first-book.html",
-    "title": "Part 1: Write the book",
-    "section": "",
-    "text": "Sample additional page"
+    "objectID": "base-r-graphics.html#customizing-plot-appearance",
+    "href": "base-r-graphics.html#customizing-plot-appearance",
+    "title": "1  Base R Graphics",
+    "section": "1.1 Customizing Plot Appearance",
+    "text": "1.1 Customizing Plot Appearance\n\n1.1.1 Adjusting Axis Labels and Titles\n\n# Example 1\nx &lt;- 1:10\ny &lt;- x^2\nplot(x, y, main = \"Quadratic Function\", xlab = \"X\", ylab = \"Y\")\n\n\n\n# Example 2\ndf &lt;- data.frame(Time = 1:10, Value = cumsum(rnorm(10)))\nplot(df$Time, df$Value, main = \"Cumulative Sum\", xlab = \"Time\", ylab = \"Cumulative Value\")\n\n\n\n\n\n\n1.1.2 Changing Line Types, Colors, and Symbols\n\n# Example 1\nx &lt;- 1:5\ny1 &lt;- x\ny2 &lt;- 2 * x\ny3 &lt;- 3 * x\n\nplot(x, y1, type=\"b\", col=\"red\", pch=16, lty=1, ylim=c(0, 15), main=\"Multiple Lines Example\")\npoints(x, y2, col=\"blue\", pch=17, lty=2)\nlines(x, y3, col=\"green\", lty=3)\n\n\n\n# Example 2\nset.seed(123)\nx &lt;- rnorm(50)\ny &lt;- x + rnorm(50, mean=2)\nplot(x, y, col=\"purple\", pch=19, main=\"Scatter Plot with Customized Symbols\", xlab=\"X\", ylab=\"Y\")\n\n\n\n\n\n# Create data\nx &lt;- 1:10\ny &lt;- 1:10\n\n# Line Types\npar(mar=c(4, 4, 2, 2))\nplot(x, y, type=\"n\", main=\"All Line Types\", xlab=\"X\", ylab=\"Y\", ylim=c(0, 6))\nfor (i in 0:5) {\n  lines(x, rep(i*.5, length(x)), lty=i, col=\"black\", lwd=2)\n}\n\nlegend(\"topright\", legend=0:5, title=\"Line Types\", lty=0:5, col=\"black\", lwd=2, ncol=3)\n\n\n\n\n\n# Colors\npar(mar=c(4, 4, 2, 2))\nplot(x, y, type=\"n\", main=\"All Colors\", xlab=\"X\", ylab=\"Y\", ylim=c(0, 9))\nfor (i in 1:8) {\n  lines(x, rep(i*.5, length(x)), col=i, lwd=2)\n}\n\nlegend(\"topright\", legend=1:8, title=\"Colors\", col=1:8, lwd=2, ncol=2)\n\n\n\n\n\n# symbols\n# todo"
   },
   {
-    "objectID": "hello-world.html",
-    "href": "hello-world.html",
-    "title": "1  The Hello World Example",
-    "section": "",
-    "text": "Hello Quarto World!"
+    "objectID": "r-environment-variables.html#retrieveaccess-environment-variables",
+    "href": "r-environment-variables.html#retrieveaccess-environment-variables",
+    "title": "2  R Environment Variables",
+    "section": "2.1 Retrieve/access environment variables:",
+    "text": "2.1 Retrieve/access environment variables:\nValues stored in the system environment can be retrieved using Sys.getenv(\"VAR_NAME\").\n\n# Example: Accessing environment variable named API_KEY\napi_key &lt;- Sys.getenv(\"API_KEY\")\napi_key\n\n[1] \"\"\n\n\nIn the case where the value might not be found, make sure to specify an unset value that acts as a default.\n\n# Example: Accessing environment variable named API_KEY\napi_key &lt;- Sys.getenv(\"API_KEY\", unset = NA)\napi_key\n\n[1] NA\n\n\nNote, the Sys.getenv() function only returns a character value."
+  },
+  {
+    "objectID": "r-environment-variables.html#set-environment-variables-in-your-r-environment",
+    "href": "r-environment-variables.html#set-environment-variables-in-your-r-environment",
+    "title": "2  R Environment Variables",
+    "section": "2.2 Set environment variables in your R environment",
+    "text": "2.2 Set environment variables in your R environment\nEnvironment variables can be set in R by using Sys.setenv().\n\nSys.setenv(API_KEY = \"your_api_key\")"
+  },
+  {
+    "objectID": "r-environment-variables.html#use-an-.renviron-file-for-configuration",
+    "href": "r-environment-variables.html#use-an-.renviron-file-for-configuration",
+    "title": "2  R Environment Variables",
+    "section": "2.3 Use an .Renviron file for configuration:",
+    "text": "2.3 Use an .Renviron file for configuration:\nFrequently using environment variables? Instead of defining them for each script, aim to store environment variables in a .Renviron file in the project directory.\nVariables are specified in the .Renviron file with the format VAR_NAME=value.\n\n\n\n\n\n\nNote\n\n\n\nAvoid using spaces around the = sign.\n\n\n# Example .Renviron file\nAPI_KEY=your_api_key"
+  },
+  {
+    "objectID": "r-environment-variables.html#access-.renviron-from-r-using-browseurl-or-usethis-package",
+    "href": "r-environment-variables.html#access-.renviron-from-r-using-browseurl-or-usethis-package",
+    "title": "2  R Environment Variables",
+    "section": "2.4 Access .Renviron from R using browseURL() or usethis package",
+    "text": "2.4 Access .Renviron from R using browseURL() or usethis package\nThe .Renviron file may be accessed using either browseURL(\"~/.Renviron\") or with usethis::edit_r_environ() for editing.\n\n# Example: Load .Renviron file with browseURL()\nutils::browseURL(\"~/.Renviron\")\n\n\n# Example: Load .Renviron file with the usethis package\nusethis::edit_r_environ()\n\n\n2.4.1 TODO: mention dotenv for managing environment variables?"
   },
   {
     "objectID": "appendix-notes.html",
