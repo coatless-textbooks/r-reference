@@ -1,0 +1,66 @@
+# R Environment Variables
+
+Setting up and using environment variables in R is useful for handling configuration
+details and/or suppressing private information. 
+
+## Retrieve/access environment variables:
+
+Values stored in the system environment can be retrieved using `Sys.getenv("VAR_NAME")`.
+
+```{r}
+# Example: Accessing environment variable named API_KEY
+api_key <- Sys.getenv("API_KEY")
+api_key
+```
+
+In the case where the value might not be found, make sure to specify an **unset** value that acts as a default.
+
+```{r}
+# Example: Accessing environment variable named API_KEY
+api_key <- Sys.getenv("API_KEY", unset = NA)
+api_key
+```
+
+Note, the `Sys.getenv()` function only returns a `character` value.
+
+## Set environment variables in your R environment
+
+Environment variables can be set in R by using `Sys.setenv()`.
+
+```{r}
+Sys.setenv(API_KEY = "your_api_key")
+```
+
+## Use an `.Renviron` file for configuration:
+
+Frequently using environment variables? Instead of defining them for each script, aim to store
+environment variables in a `.Renviron` file in the project directory.
+
+Variables are specified in the `.Renviron` file with the format `VAR_NAME=value`.
+
+:::callout-note
+Avoid using spaces around the `=` sign.
+:::
+
+```ini
+# Example .Renviron file
+API_KEY=your_api_key
+```
+
+## Access `.Renviron` from R using `browseURL()` or `usethis` package
+
+The `.Renviron` file may be accessed using either `browseURL("~/.Renviron")` or with `usethis::edit_r_environ()` for editing.
+
+```{r}
+#| eval: false
+# Example: Load .Renviron file with browseURL()
+utils::browseURL("~/.Renviron")
+```
+
+```{r}
+#| eval: false
+# Example: Load .Renviron file with the usethis package
+usethis::edit_r_environ()
+```
+
+### TODO: mention `dotenv` for managing environment variables?

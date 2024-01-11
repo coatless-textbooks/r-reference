@@ -3,21 +3,26 @@ project:
   output-dir: _book
   
 book:
-  title: "Title of Next Bestseller"
+  title: "R Reference"
   author: "JJB"
   description: | 
     TBA
   #cover-image: images/cover.png
-  site-url: https://tutorials.thecoatlessprofessor.com/quarto-book-template
-  repo-url: https://github.com/coatless-tutorials/quarto-book-template
+  site-url: https://textbooks.thecoatlessprofessor.com/r-reference
+  repo-url: https://github.com/coatless-textbooks/r-reference
   repo-branch: main
   repo-actions: [edit]
   sharing: [twitter, facebook, linkedin]
   chapters:
     - index.qmd
-    - part: my-first-book.qmd
+    - part: "Graphics"
       chapters: 
-        - hello-world.qmd
+        - base-r-graphics.qmd
+    - part: "Configuration"
+      chapters: 
+        - r-environment-variables.qmd
+    - part: "Parallelization"
+    - part: "Compiled Code"
   appendices:
     - appendix-notes.qmd
     
@@ -25,3 +30,10 @@ format:
   html: 
     theme: cosmo
     code-link: true
+
+# Register Adsense plugin to appear on all pages
+adsense:
+  publisher-id: ca-pub-4979996562647159
+
+filters:
+- adsense

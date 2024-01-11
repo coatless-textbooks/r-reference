@@ -1,23 +1,4 @@
 
-
 ## Welcome {.unnumbered}
 
-Welcome splash page! Provide an overview of the book.
-
-Sample evaluation of R and Python in a side-by-side manner:
-
-::: {layout-ncol=2}
-#### R
-
-```{r}
-my_list = list(1, 2, 3)
-typeof(my_list)
-```
-
-#### Python
-
-```{python}
-my_list = [1, 2, 3]
-type(my_list)
-```
-:::
+Hello there! You've stumbled across a reference guide that contains different useful R code and/or links. There isn't a lot of depth associated with each page if you are expecting a through walkthrough of the material.
